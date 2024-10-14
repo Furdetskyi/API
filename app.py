@@ -2,14 +2,14 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 
-# Створюємо додаток та API
+# РЎС‚РІРѕСЂСЋС”РјРѕ РґРѕРґР°С‚РѕРє С‚Р° API
 app = Flask(__name__)
 api = Api(app)
 
-# Створюємо простий словник для збереження даних
+# РЎС‚РІРѕСЂСЋС”РјРѕ РїСЂРѕСЃС‚РёР№ СЃР»РѕРІРЅРёРє РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ РґР°РЅРёС…
 items = []
 
-# Створюємо клас ресурсу для роботи з API
+# РЎС‚РІРѕСЂСЋС”РјРѕ РєР»Р°СЃ СЂРµСЃСѓСЂСЃСѓ РґР»СЏ СЂРѕР±РѕС‚Рё Р· API
 class Item(Resource):
     def get(self, name):
         for item in items:
@@ -31,7 +31,7 @@ class Item(Resource):
         items = [item for item in items if item['name'] != name]
         return {'message': 'Item deleted'}
 
-# Маршрутизація для ресурсу
+# РњР°СЂС€СЂСѓС‚РёР·Р°С†С–СЏ РґР»СЏ СЂРµСЃСѓСЂСЃСѓ
 api.add_resource(Item, '/item/<string:name>', '/item')
 
 if __name__ == '__main__':
